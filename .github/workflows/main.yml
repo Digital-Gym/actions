@@ -1,0 +1,34 @@
+name: Build and Move Dist
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-move-dist:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install frontend dependencies and build
+        run: |
+          cd frontend
+          npm install
+          npm run build
+
+      - name: Move dist to public
+        run: |
+          mv frontend/dist backend/public
+
+      - name: Commit and push changes
+        run: |
+          cd backend
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add -A
+          git commit -m "Update frontend build"
+          git push
+      
