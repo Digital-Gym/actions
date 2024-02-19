@@ -21,7 +21,7 @@ jobs:
 
       - name: Move dist to public
         run: |
-          rm backend/public/*
+          rm -r backend/public/*
           mv frontend/dist backend/public
 
       - name: Commit and push changes
