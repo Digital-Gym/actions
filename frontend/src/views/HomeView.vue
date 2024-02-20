@@ -43,7 +43,15 @@ const data = ref([
 
 <template>
   <div class="sidebar flex justify-content-center">
-      <Button type="button" icon="pi pi-ellipsis-v" @click="toggle" aria-haspopup="true" aria-controls="overlay_menu" />
+      <Button 
+        type="button" 
+        icon="pi pi-ellipsis-v" 
+        @click="toggle" 
+        aria-haspopup="true"
+        aria-controls="overlay_menu"
+        rounded
+        outlined
+      />
       <Menu ref="menu" id="overlay_menu" :model="items" :popup="true">
         <template #submenuheader="{ item }">
           <span class="text-secondary font-bold text-sm">{{ item.label }}</span>
